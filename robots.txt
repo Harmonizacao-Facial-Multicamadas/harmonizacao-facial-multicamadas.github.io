@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://siqueirawhelisson-design.github.io/harmonizacao-facial-multicamadas/sitemap.xml
