@@ -332,17 +332,30 @@ body.nav-open{overflow:hidden}
   padding-top:clamp(5.5rem,10vh,7rem);padding-bottom:0;
   position:relative;overflow:hidden;
 }
+/* O branco puro deixava a figura a flutuar no vazio. Uma lavagem vertical
+   muito fraca dá-lhe chão, e termina exactamente no tom da secção seguinte
+   (--gray-bg), por isso a junção entre as duas deixa de se notar. O sopro
+   de cor em cima à esquerda evita que a coluna do título fique num branco
+   chapado. */
+.hero.light{
+  background:
+    radial-gradient(72% 58% at 6% 16%,rgba(14,118,144,.055),rgba(14,118,144,0) 70%),
+    linear-gradient(180deg,var(--white) 0%,#FBFCFE 34%,#F6F9FC 70%,var(--gray-bg) 100%);
+}
 /* Discos suaves atrás da figura, em vez das linhas antigas */
 .hero-layers{
   position:absolute;right:-8%;top:-6%;width:min(62vw,880px);aspect-ratio:1;
   pointer-events:none;
 }
+/* `closest-side` centrado: o degradê chega a zero exactamente na borda do
+   disco. Fora do centro, ou com a paragem noutro valor, a caixa cortava o
+   degradê a meio e via-se o arco do círculo. */
 .hero-layers span{
   position:absolute;inset:0;border-radius:50%;
-  background:radial-gradient(circle at 42% 40%,rgba(53,198,232,.10),rgba(53,198,232,0) 68%);
+  background:radial-gradient(circle closest-side at 50% 50%,rgba(53,198,232,.16),rgba(53,198,232,0) 100%);
 }
-.hero-layers span:nth-child(2){inset:14% 16% 16% 14%;background:radial-gradient(circle at 46% 44%,rgba(14,118,144,.09),rgba(14,118,144,0) 66%)}
-.hero-layers span:nth-child(3){inset:30% 32% 30% 28%;background:radial-gradient(circle at 50% 46%,rgba(53,198,232,.12),rgba(53,198,232,0) 64%)}
+.hero-layers span:nth-child(2){inset:14% 16% 16% 14%;background:radial-gradient(circle closest-side at 50% 50%,rgba(14,118,144,.12),rgba(14,118,144,0) 100%)}
+.hero-layers span:nth-child(3){inset:30% 32% 30% 28%;background:radial-gradient(circle closest-side at 50% 50%,rgba(53,198,232,.17),rgba(53,198,232,0) 100%)}
 
 /* O texto mantém-se alinhado com o resto da página; a coluna da direita
    corre até à margem real do ecrã, para a figura sair do enquadramento em
