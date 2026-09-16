@@ -339,8 +339,14 @@ body.nav-open{overflow:hidden}
    chapado. */
 .hero.light{
   background:
-    radial-gradient(72% 58% at 6% 16%,rgba(14,118,144,.055),rgba(14,118,144,0) 70%),
-    linear-gradient(180deg,var(--white) 0%,#FBFCFE 34%,#F6F9FC 70%,var(--gray-bg) 100%);
+    /* poça de sombra por baixo da figura: o centro cai fora do ecrã, por
+       isso só se vê a parte de cima, que é a que dá peso ao fundo */
+    radial-gradient(78% 48% at 68% 106%,rgba(11,10,30,.13),rgba(11,10,30,.04) 48%,rgba(11,10,30,0) 76%),
+    /* sombra fraca a descer do topo: tira o branco de papel por trás do
+       título sem lhe roubar sossego para ler */
+    radial-gradient(96% 44% at 14% -6%,rgba(11,10,30,.075),rgba(11,10,30,0) 74%),
+    radial-gradient(78% 62% at 4% 22%,rgba(14,118,144,.075),rgba(14,118,144,0) 72%),
+    linear-gradient(180deg,#FCFDFF 0%,#F8FAFD 32%,#F1F5FA 72%,var(--gray-bg) 100%);
 }
 /* Discos suaves atrás da figura, em vez das linhas antigas */
 .hero-layers{
@@ -417,8 +423,9 @@ body.nav-open{overflow:hidden}
 .hero-main img{
   display:block;width:100%;max-width:none;height:auto;margin-left:0;
   filter:
-    drop-shadow(-4px 5px 8px rgba(20,18,53,.13))
-    drop-shadow(-20px 32px 48px rgba(11,10,30,.16));
+    drop-shadow(-3px 4px 6px rgba(20,18,53,.18))
+    drop-shadow(-12px 18px 26px rgba(11,10,30,.17))
+    drop-shadow(-26px 44px 62px rgba(11,10,30,.22));
 }
 /* Os nomes assentam sobre a base da fotografia, em cartões claros */
 .hero-names{
