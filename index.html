@@ -183,7 +183,9 @@ section{padding-block:var(--sec-y);position:relative}
   font:900 clamp(1.9rem,4.6vw,3.4rem)/1.12 var(--f-d);
   letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance;
 }
-.h2 em{font:italic 400 .92em/1 var(--f-s);text-transform:none;letter-spacing:0;color:var(--ink)}
+/* O destaque continua a ser a serifa em itálico, mas em maiúsculas como o
+   resto do título: caixa uniforme em todos os títulos da página. */
+.h2 em{font:italic 400 .92em/1 var(--f-s);text-transform:uppercase;letter-spacing:.01em;color:var(--ink)}
 .dark .h2 em,.petrol .h2 em{color:var(--cyan-l)}
 
 .lead{color:var(--ink-soft);max-width:56ch;font-size:clamp(1rem,1.4vw,1.1rem)}
@@ -550,12 +552,6 @@ body.nav-open{overflow:hidden}
 .belly-quote{margin-top:clamp(2.2rem,4.5vw,3.2rem);padding-left:1.75rem;border-left:2px solid var(--champ)}
 .belly-quote p{font:italic 400 clamp(1.1rem,2.1vw,1.45rem)/1.55 var(--f-s);color:var(--ink);max-width:34ch}
 .belly-quote cite{display:block;margin-top:1.2rem;font:700 .66rem/1 var(--f-d);letter-spacing:.24em;text-transform:uppercase;color:#9A7C43;font-style:normal}
-.belly-roles-line{display:flex;flex-wrap:wrap;margin-top:clamp(2.2rem,4vw,3rem);border-top:1px solid var(--line-light)}
-.belly-roles-line span{
-  padding:1.1rem 1.4rem 1.1rem 0;margin-right:1.4rem;border-right:1px solid var(--line-light);
-  font:700 .68rem/1 var(--f-d);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
-}
-.belly-roles-line span:last-child{border-right:0;margin-right:0}
 /* A coluna da fotografia acompanha a leitura do texto, em vez de deixar
    um vazio de várias centenas de píxeis quando o texto é mais longo. */
 /* A fotografia acompanha a leitura e nunca é maior do que o ecrã:
@@ -942,8 +938,7 @@ body.nav-open{overflow:hidden}
       <div>
         <p class="eyebrow" data-reveal="up">O curso</p>
         <h2 class="h2" data-reveal="up" style="--d:.1s">
-          Do básico ao avançado.<br>
-          <em>Sem saltar etapas.</em>
+          Do básico ao avançado.
         </h2>
       </div>
 
@@ -1124,11 +1119,6 @@ body.nav-open{overflow:hidden}
         elevem profissionais e deixem uma marca positiva no mercado.”</p>
         <cite>Belinha Cardoso</cite>
       </blockquote>
-
-      <div class="belly-roles-line" data-reveal="up" style="--d:.42s">
-        <span>CEO BeLuxClinic</span><span>Formadora</span><span>Mentora</span>
-        <span>Palestrante</span><span>Empresária</span>
-      </div>
 
       <p data-reveal="up" style="--d:.48s;margin-top:1.8rem">
         <a class="ig ig--champ" target="_blank" rel="noopener"
@@ -1364,7 +1354,7 @@ body.nav-open{overflow:hidden}
           Quero garantir o meu lugar
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="final-note">Fale diretamente com a organização através do WhatsApp.</p>
+        <p class="final-note">Fale diretamente com a organização por meio do WhatsApp.</p>
       </div>
     </div>
     </div>
