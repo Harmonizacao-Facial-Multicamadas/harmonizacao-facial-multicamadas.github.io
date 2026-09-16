@@ -770,6 +770,11 @@ body.nav-open{overflow:hidden}
   .hero-names span{box-shadow:none;background:var(--gray-bg);text-align:left}
   .conceito-grid,.doc-grid,.belly-grid,.final-grid,.format-grid{grid-template-columns:1fr;gap:3rem}
   .doc-fig,.format-fig,.conceito-fig{max-width:460px}
+  /* No telemóvel a apresentação do formador vem antes do retrato. Na coluna
+     dupla a fotografia está à esquerda e não faz mal; empilhada, caía logo a
+     seguir aos casos clínicos e ficavam duas fotografias encostadas. */
+  .doc-grid > div{order:1}
+  .doc-fig{order:2}
   .belly-fig{position:static;width:auto;max-width:460px}
   .belly-fig{margin-left:auto}
 
@@ -1286,23 +1291,25 @@ body.nav-open{overflow:hidden}
 
     <div class="cities">
       <article class="city" data-reveal="up" style="--d:.1s">
-        <p class="idx">01 · Lisboa</p>
+        <p class="idx">Edição 01</p>
         <p class="name">Lisboa</p>
         <p class="when"><b>13 e 14</b> <span>Outubro</span></p>
         <a class="btn btn--ink btn--wide" target="_blank" rel="noopener"
+           aria-label="Quero participar em Lisboa, 13 e 14 de outubro"
            href="https://wa.me/351969290136?text=Ol%C3%A1%20Belinha%2C%20gostava%20de%20garantir%20a%20minha%20vaga%20na%20forma%C3%A7%C3%A3o%20de%20Harmoniza%C3%A7%C3%A3o%20Facial%20Multicamadas%20em%20Lisboa%20(13%20e%2014%20de%20outubro).">
-          Quero participar em Lisboa
+          Quero participar
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </article>
 
       <article class="city" data-reveal="up" style="--d:.22s">
-        <p class="idx">02 · Porto</p>
+        <p class="idx">Edição 02</p>
         <p class="name">Porto</p>
         <p class="when"><b>15 e 16</b> <span>Outubro</span></p>
         <a class="btn btn--ink btn--wide" target="_blank" rel="noopener"
+           aria-label="Quero participar no Porto, 15 e 16 de outubro"
            href="https://wa.me/351969290136?text=Ol%C3%A1%20Belinha%2C%20gostava%20de%20garantir%20a%20minha%20vaga%20na%20forma%C3%A7%C3%A3o%20de%20Harmoniza%C3%A7%C3%A3o%20Facial%20Multicamadas%20no%20Porto%20(15%20e%2016%20de%20outubro).">
-          Quero participar no Porto
+          Quero participar
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </article>
@@ -1525,10 +1532,14 @@ body.nav-open{overflow:hidden}
   /* Sticky CTAs */
   const stickyBar  = document.getElementById('stickyBar');
   const finalSec   = document.getElementById('inscricao');
+  const footer     = document.querySelector('.site-footer');
   let finalVisible = false;
+  let footVisible  = false;
 
+  /* O balão desaparece onde já há um convite a olhar para o leitor (o bloco
+     de inscrição) e no rodapé, onde estava a tapar os contactos e o crédito. */
   const syncSticky = () => {
-    const show = scrollY > 620 && !finalVisible;
+    const show = scrollY > 620 && !finalVisible && !footVisible;
     stickyBar.classList.toggle('is-visible', show);
     document.body.classList.toggle('has-sticky', show);
     stickyBar.setAttribute('aria-hidden', String(!show));
@@ -1540,6 +1551,11 @@ body.nav-open{overflow:hidden}
       finalVisible = es[0].isIntersecting;
       syncSticky();
     }, {threshold:.15}).observe(finalSec);
+
+    new IntersectionObserver(es => {
+      footVisible = es[0].isIntersecting;
+      syncSticky();
+    }, {rootMargin:'0px 0px -12% 0px'}).observe(footer);
   }
   syncSticky();
 })();
